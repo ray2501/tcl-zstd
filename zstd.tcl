@@ -47,8 +47,7 @@ critcl::ccommand zstd::compress {cdata interp objc objv} {
         int rc = Tcl_GetIntFromObj(interp, objv[2], &level);
         if (rc != TCL_OK || ((level < 1) || (level > max_level))) {
             Tcl_SetObjResult(interp,
-                             Tcl_ObjPrintf("level must be integer between "
-                                           "1 and %d", max_level));
+                             Tcl_NewStringObj("level incorrect", -1));
             return TCL_ERROR;
         }
     }
@@ -67,8 +66,7 @@ critcl::ccommand zstd::compress {cdata interp objc objv} {
                                     source_len, level);
     if (ZSTD_isError(compressed_size)) {
             Tcl_SetObjResult(interp,
-                             Tcl_ObjPrintf("zstd encoding error: %s",
-                                           ZSTD_getErrorName(compressed_size)));
+                             Tcl_NewStringObj(ZSTD_getErrorName(compressed_size), -1));
             return TCL_ERROR;
     }
 
@@ -108,8 +106,7 @@ critcl::ccommand zstd::decompress {cdata interp objc objv} {
                                         source_len);
     if (decompressed_size != dest_size) {
         Tcl_SetObjResult(interp,
-                         Tcl_ObjPrintf("zstd decoding error: %s",
-                                       ZSTD_getErrorName(decompressed_size)));
+                         Tcl_NewStringObj(ZSTD_getErrorName(decompressed_size), -1));
         return TCL_ERROR;
     }
 
