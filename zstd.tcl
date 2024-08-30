@@ -18,6 +18,7 @@ namespace eval zstd {
     variable version {}
 }
 critcl::ccode {
+    #include <stdlib.h>
     #include <zstd.h>
 }
 critcl::clibraries -lzstd
