@@ -1,7 +1,7 @@
 #!/usr/bin/tclsh
 
 set arch "x86_64"
-set base "tcl-zstd-0.1.6"
+set base "tcl-zstd-0.2.1"
 
 file mkdir $base
 cd $base

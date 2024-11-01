@@ -5,14 +5,14 @@
 %define packagename zstd
 
 Name:           tcl-zstd
-Version:        0.1.6
+Version:        0.2.1
 Release:        0
 License:        MIT
 Summary:        Libzstd bindings for Tcl through Critcl
 Url:            https://wiki.tcl.tk/48788
 Group:          Development/Libraries/Tcl
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  tcl >= 8.4
+BuildRequires:  tcl >= 8.6
 BuildRequires:  gcc
 BuildRequires:  tcllib
 BuildRequires:  critcl >= 3.1.10
